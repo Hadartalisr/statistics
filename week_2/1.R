@@ -40,8 +40,8 @@ c_math = sqldf('Select math from df a where a.school = "C"')$math
 lines(density(c_math, kernel = c("cosine"),window = kernel, bw = 1.5),
       add=T, col="blue")
 legend("topleft", c("A","B","C"),fill=c("orange","red","blue"))
-# C's students has the best knowledge in math, then B's students 
-# and at the last place C's students. 
+# C's students has the best knowledge in math, then A's students 
+# and at the last place B's students. 
 # When we inspect the size of the school we can figure out that there is 
 # an inverse proportion between the size of the school to it's students
 # math knowledge

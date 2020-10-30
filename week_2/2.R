@@ -45,12 +45,12 @@ plot(c(v_65_percentile, new_v_65_percentile),c(1,2),
 # of each summary statistic.
 # the Mean has changed the most - very small or large values 
 # in some observations can lead to major changes.
-# the alpha_mean has changed a bit - as we were expected - 
+# the alpha_mean has changed a bit - as we were expecting - 
 # after we added the 200 value, the value that was in the previous 
 # (1-alpha)*n place took part in the new mean. 
 # that caused the mean to increase from the previous vector.
 # this kind of summary statistic gives us good results, and has Robustness as we
-# would like to. 
+# would like to.
 # because the length of the vector is 8, the median is the mean of 84 and 88,
 # which were not changed between the two observations.
 # on the other hand, the 65_percentile is the weighted average of the 6_th and 
