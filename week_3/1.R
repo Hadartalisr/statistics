@@ -3,7 +3,7 @@ Path = "C:/users/hadar/Desktop/stats/statistics_R/week_3/heights.csv"
 df = read.table(file = Path, header=T, sep=",")
 par(mfrow=c(1,1))
 #q.1
-plot(df$HEIGHT, df$WEIGHT ,xlab = "Height", ylab = "WEIGHT", col="red")
+plot(df$HEIGHT, df$WEIGHT ,xlab = "Height", ylab = "WEIGHT", col="black")
 
 #q.2
 first = unname(quantile(df$HEIGHT,(1/3)))
@@ -19,6 +19,21 @@ par(new=False)
 l = line(c(first_x, second_x), c(first_y, second_y))
 n = l$coefficients[1]
 m = l$coefficients[2]
-abline(a=n, b=m)
+abline(a=n, b=m, col="red")
+l2 = lm(WEIGHT~HEIGHT, data=df)
+n2 = l2$coefficients[1]
+m2 = l2$coefficients[2]
+abline(a=n2, b=m2, col="blue")
+
+#q.3
+"In out data, there is a mistake measurement - according to the data, 
+one of the student's height is 14 meters.
+From the previous question we can determine that the least squares line
+is very sensetive to mistakes in the observations - because of this one observation,
+the slope is very small and doesn't reflect the strong correlation between the 2 parameters.
+it's make sense - we have previous knowledge that LSR's asymptotic breaking point is 0.
+On the other hand, the resistant line has more robustness, and this one observation 
+didn't affect its shape at all.
+"
 
 
