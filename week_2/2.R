@@ -13,8 +13,10 @@ mean_alpha_cut <- function(v, alpha){
   return(m)
 }
 v_alpha_mean = mean_alpha_cut(v,0.2)
+v_alpha_mean
 #q.2.3
 v_median = median(v)
+v_median
 #q.2.4
 v_65_percentile = quantile(v,0.65)
 v_65_percentile
@@ -26,7 +28,9 @@ new_v = c(100 ,84,88 ,96 ,0 ,69 ,38 ,200)
 new_v_mean = mean(new_v)
 new_v_mean
 new_v_alpha_mean = mean_alpha_cut(new_v,0.2)
+new_v_alpha_mean
 new_v_median = median(new_v)
+new_v_median
 new_v_65_percentile = quantile(new_v,0.65)
 new_v_65_percentile
 
