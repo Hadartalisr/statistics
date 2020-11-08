@@ -42,7 +42,7 @@ unname(m2)
 # correlation 
 cor = cor(df$HEIGHT, df$WEIGHT)
 cor
-# r squerd
+# Coefficient of determination
 r_squerd = cor^2 
 r_squerd
 # According to those measurements, we wouldn't analyze
@@ -81,7 +81,7 @@ unname(m2)
 # correlation 
 cor = cor(df$HEIGHT, df$WEIGHT)
 cor
-# r squerd
+# Coefficient of determination
 r_squerd = cor^2 
 r_squerd
 # According to those measurements, we would determine
