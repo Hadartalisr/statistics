@@ -1,4 +1,3 @@
-library(sqldf)
 Path = "C:/users/hadar/Desktop/stats/statistics_R/week_3/flatprices.csv"
 df = read.table(file = Path, header=T, sep=",")
 par(mfrow=c(3,1))

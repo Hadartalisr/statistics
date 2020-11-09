@@ -1,4 +1,3 @@
-library(sqldf)
 Path = "C:/users/hadar/Desktop/stats/statistics_R/week_3/heights.csv"
 df = read.table(file = Path, header=T, sep=",")
 par(mfrow=c(2,1))
@@ -15,7 +14,6 @@ second = unname(quantile(df$HEIGHT,(2/3)))
 second_df = df[which(df$HEIGHT >= second),]
 second_y = mean(second_df$WEIGHT)
 second_x = unname(quantile(df$HEIGHT,(5/6)))
-par(new=False)
 l = line(c(first_x, second_x), c(first_y, second_y))
 n = unname(l$coefficients[1])
 m = unname(l$coefficients[2])
@@ -64,7 +62,6 @@ second = unname(quantile(df$HEIGHT,(2/3)))
 second_df = df[which(df$HEIGHT >= second),]
 second_y = mean(second_df$WEIGHT)
 second_x = unname(quantile(df$HEIGHT,(5/6)))
-par(new=False)
 l = line(c(first_x, second_x), c(first_y, second_y))
 n = unname(l$coefficients[1])
 m = unname(l$coefficients[2])

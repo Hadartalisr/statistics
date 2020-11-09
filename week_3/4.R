@@ -1,8 +1,10 @@
 par(mfrow=c(2,1))
 #q.1
 x = rnorm(30, mean=5, sd=1)
+x
 #q.2
 y = ((5*x)+2)
+y
 #q.3
 # we would expect that the correlation between x and y will be y - there is
 # a perfect linear connection between those 2 variables.
