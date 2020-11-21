@@ -27,16 +27,19 @@ sd_x
 get_random_x2 <- function(){
   y1 = sample(1:6, 1)
   y2 = sample(1:6, 1)
-  x2 = y1+y2
+  x2 = (y1+y2)/2
   return(x2) 
 }
 x2 = get_random_x2()
 # mean of x2 (2 cube results) equals 2 mean of x (Expectation is linear)
-# therefore, mean(x2) = mean(x+x) = 2 mean(x) = 2*3.5 = 7
-mean_x2 = 7
+# therefore, mean(x2) = mean(x+x)/2 = 2 mean(x)/2 = 3.5
+mean_x2 = 3.5
 # the cubes are i.i.d therefore - 
-# var(y) = var(x1+x2) = var(x1) + var(x2) = 2*var(x)
-sd_x2 = sqrt(2*var_x)
+# var(y) = var((x1+x2)/2) = 0.25(var(x1) + var(x2)) = 0.5*var(x)
+var_x2 = 0.5*var_x
+var_x2
+
+sd_x2 = sqrt(var_x2)
 sd_x2
 
 
@@ -51,13 +54,13 @@ mean_x2_vec
 sd_x2_vec = my_sd(x2_vec)
 sd_x2_vec
 #calculate the diff :
-mean_x2_vec - 7
+mean_x2_vec - 3.5
 sd_x2_vec - sd_x2
 # thus, the results were close to the expected theory values.
 
 
 #q.3
-x <- seq(-10, 20,length=1000)
+x <- seq(-2, 8,length=1000)
 y <- dnorm(x, mean=mean_x2, sd=sd_x2)
 lines(x, y, type="l", lwd=1)
 # yes, we can say that x2 distribute approximately noraml
@@ -71,8 +74,8 @@ mean_vec = c()
 sd_vec = c()
 
 par(mfrow=c(2,2))
-for(n in seq(200,2000,600)){
-  plot(density(x2_vec), main = n, xlab = "result")
+for(n in seq(100,1000,300)){
+  plot(x,y, main = n, xlab = "result",type="l",lwd=1)
   
   n_vec = c(n_vec,n)
   x3_vec = c()
@@ -87,5 +90,9 @@ for(n in seq(200,2000,600)){
   sd_x3_vec = my_sd(x3_vec)
   sd_vec = c(sd_vec, sd_x3_vec)
 }
+
+
+
+
 
 

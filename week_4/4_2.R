@@ -19,24 +19,55 @@ hist(df$Time, col="black", breaks= 20 ,xlab = "time",
 par(mfrow = c(1,1))
 plot(x = df$Age ,y= df$Time, xlab = "age", ylab = "time",
      xlim = c(min(df$Age)-2,max(df$Age)+1))
-abline(lm(df$Time~df$Age-1))
-Coefficient_of_determination = cor(df$Time,df$Age)^2
+l = lm(df$Time~df$Age-1)
+abline(l)
+y_hat = predict(l)
+Coefficient_of_determination = 1-sum((df$Time - y_hat)^2/sum(df$Time^2))
+Coefficient_of_determination 
+
+
 
 #q.3
-# We have checked some log transformations and we have not determined 
-# any transformations which increase the correlation in a significant amount.
+
+df2 = df[which(df$Time < 30),]
+log_age = log(df2$Age)
+par(mfrow = c(1,1))
+l = lm(df2$Time~log_age-1)
+y_hat = predict(l)
+Coefficient_of_determination = 1-sum((df2$Time - y_hat)^2/sum(df2$Time^2))
+Coefficient_of_determination 
+
+
+
+log_time = log(df2$Time)
+par(mfrow = c(1,1))
+l = lm(log_time~df2$Age-1)
+y_hat = predict(l)
+Coefficient_of_determination = 1-sum((log_time - y_hat)^2/sum(log_time^2))
+Coefficient_of_determination 
+
+# we have determined that taking the log of the time bring us 
+# to 0.8712446 which is much closer to 1 then the our previous R^2 (0.5889811)
+
 
 #q.4
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  
-  
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-plot(x = df$Time ,y= df$Age, xlab = "time", ylab = "age")
-Coefficient_of_determination = cor(df$Time,df$Age)^2
+par(mfrow = c(1,1))
+l = lm(log_time~df2$Age-1)
+plot(x = df2$Age ,y= log_time, xlab = "age", ylab = "time",
+     xlim = c(min(df2$Age)-2,max(df2$Age)+1))
+y_hat = predict(l)
+abline(l)
+Coefficient_of_determination = 1-sum((log_time - y_hat)^2/sum(log_time^2))
+Coefficient_of_determination 
 
 
-plot(x = sqrt(df$Age) ,y= sqrt(df$Time), xlab = "age", ylab = "time")
-abline(lm(df$Age~df$Time-1))
-Coefficient_of_determination = cor(df$Age,df$Age)^2
+#q.5
+plot(x = df2$Age ,y= df2$Time , log = "y" , xlab = "age", ylab = "time",
+     xlim = c(min(df2$Age)-2,max(df2$Age)+1))
+f1 <- function(t) exp(l$coefficients[1]*t)
+
+curve(f1,from = min(df2$Age)-10,to = max(df2$Age)+10, add=TRUE)
+
+
 
      
